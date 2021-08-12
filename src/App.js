@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import LandingPage from "./pages/LandingPage";
+import GamePlay from "./pages/GamePlay";
+import Scoreboard from "./pages/Scoreboard";
+import NotFound from "./pages/NotFound";
+
+const App = () => (
+  <Router>
+    <Switch>
+      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/play" component={GamePlay} />
+      <Route exact path="/score" component={Scoreboard} />
+
+      <Route component={NotFound} />
+    </Switch>
+  </Router>
+);
 
 export default App;
