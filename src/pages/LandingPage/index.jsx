@@ -15,7 +15,7 @@ const LandingPage = () => {
 
   const setGameLevel = (level) => {
     setLevel(level);
-    dispatch(setGameFieldSize(level))
+    dispatch(setGameFieldSize(level));
   };
 
   return (
@@ -27,7 +27,9 @@ const LandingPage = () => {
         transition={{ type: "spring", duration: 0.7 }}
       >
         <h1 className="intro-message">Welcome to my mini memo game</h1>
-        {!level && <h6 className="level-message">*Please select difficulty level</h6>}
+        {!level && (
+          <h6 className="level-message">*Please select difficulty level</h6>
+        )}
         {!level ? (
           <div className="choose-level-buttons">
             <motion.span

@@ -20,7 +20,8 @@ const CardField = () => {
   }, [cards]);
 
   const renderCards = () =>
-    cards && cards.map((card, i) => (
+    cards &&
+    cards.map((card, i) => (
       <Card
         key={i}
         cardId={card.cardId}

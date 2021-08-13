@@ -1,4 +1,4 @@
-@import '../../style/colors.scss';
+@import "../../style/colors.scss";
 
 .memo-game-landing {
   display: flex;
@@ -19,18 +19,18 @@
       }
     }
 
-    .level-message{
+    .level-message {
       margin: 1rem;
     }
 
-    .choose-level-buttons{
+    .choose-level-buttons {
       padding: 1rem 0;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
 
-      .game-level{
+      .game-level {
         margin: 0 2rem;
         font-weight: bold;
         padding: 0.5rem 1rem;

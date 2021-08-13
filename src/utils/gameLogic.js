@@ -23,14 +23,13 @@ export const generateCards = (numberOfPairs) => {
   }
 
   return shuffleCards(cards);
-  // return cards;
 };
 
 const shuffleCards = (cards) => {
   let currentIndex = cards.length;
   let randomIndex;
 
-  // While there remain elements to shuffle...
+  // While there are elements to shuffle...
   while (0 !== currentIndex) {
     // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);

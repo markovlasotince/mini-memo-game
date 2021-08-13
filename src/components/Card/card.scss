@@ -11,7 +11,9 @@
   margin: 1rem;
   background: $base-font-color;
 
-  .matched-card, .card-background, .card-image {
+  .matched-card,
+  .card-background,
+  .card-image {
     width: 100%;
     font-size: 1.6rem;
     color: $base-color;
@@ -24,7 +26,9 @@
     width: 5rem;
     height: 5rem;
 
-    .matched-card, .card-background, .card-image {
+    .matched-card,
+    .card-background,
+    .card-image {
       font-size: 1rem;
     }
   }
