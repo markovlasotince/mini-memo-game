@@ -1,5 +1,7 @@
 # Getting Started with Mini Memo game
 
+You can see the deployed version here [Mini-memo-game](https://mini-memo-game-react-v1.herokuapp.com/)
+
 Mini memo game is game that works by flipping the cards. Only 2 cards can be opened at the same time. If they are the same they are matched, if not they are flipped again and you continue your search until you match all of them. :)
 
 Currently there are 3 levels of difficulty but that can easily be changed. The matrix of the cards is not hard coded and can be dynamicaly changed.
