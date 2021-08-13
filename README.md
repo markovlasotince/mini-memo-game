@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 How to run: 
 - clone the project (https://github.com/markovlasotince/mini-memo-game.git)
+- navigate to `memo-game-v1`
 - run `npm install`
 - run `npm start`
 
