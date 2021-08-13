@@ -1,5 +1,31 @@
-.card-wrapper{
-    border: 1px solid;
-    width: 200px;
-    height: 200px;
+@import "../../style/colors.scss";
+
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 30%;
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem;
+  background: $base-font-color;
+
+  .matched-card, .card-background, .card-image {
+    width: 100%;
+    font-size: 1.6rem;
+    color: $base-color;
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-wrapper {
+    width: 5rem;
+    height: 5rem;
+
+    .matched-card, .card-background, .card-image {
+      font-size: 1rem;
+    }
+  }
 }

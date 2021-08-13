@@ -6,7 +6,7 @@ export default function gamePlayReducer(
     totalNumberOfClicks: 0,
     cards: [],
     card: null,
-    matchedCards: []
+    matchedCards: [],
   },
   action
 ) {
@@ -14,7 +14,8 @@ export default function gamePlayReducer(
     case actionTypes.INIT_GAME:
       return {
         ...state,
-        cardFieldSize: action.cardFieldSize || state.cardFieldSize,
+        // cardFieldSize: action.cardFieldSize || state.cardFieldSize,
+        cardFieldSize: action.cardFieldSize,
         cards: action.cards,
       };
     case actionTypes.CARD_CLICK:
@@ -37,10 +38,20 @@ export default function gamePlayReducer(
         card: action.card,
       };
     case actionTypes.GET_MATCHED_CARDS:
-      return{
+      return {
         ...state,
-        matchedCards: state.cards.filter(card => card.matched)
-      }
+        matchedCards: state.cards.filter((card) => card.matched),
+      };
+    case actionTypes.RESET_STATE:
+      return {
+        totalNumberOfClicks: 0,
+        matchedCards: [],
+      };
+    case actionTypes.SET_FIELD_SIZE:
+      return {
+        cardFieldSize: action.cardFieldSize,
+        totalNumberOfClicks: 0,
+      };
     default:
       return state;
   }

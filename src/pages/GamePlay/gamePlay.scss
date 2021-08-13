@@ -1,0 +1,33 @@
+.game-play-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .game-play-welcome-message {
+    margin: 2rem 0 1rem 0;
+  }
+
+  .card-field-wrapper {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .game-play-page {
+    margin-top: 2rem;
+    width: 95%;
+    margin: 2rem auto;
+
+    .game-play-welcome-message{
+      font-size: 1.6rem;
+      margin: 2rem 0;
+    }
+
+    .card-field-wrapper {
+      width: 100%;
+      margin: auto;
+    }
+  }
+}

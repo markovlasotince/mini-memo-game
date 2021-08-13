@@ -17,7 +17,7 @@ export const cardClicked = () => ({
 
 export const getCards = (cards) => ({
   type: actionTypes.GET_CARDS,
-  cards
+  cards,
 });
 
 export const getCard = (card) => ({
@@ -40,5 +40,14 @@ export const getCardByIdAction = (cardId, cards) => (dispatch) => {
 };
 
 export const getCurrentlyMatchedCards = () => ({
-  type: actionTypes.GET_MATCHED_CARDS
-})
+  type: actionTypes.GET_MATCHED_CARDS,
+});
+
+export const resetState = () => ({
+  type: actionTypes.RESET_STATE,
+});
+
+export const setGameFieldSize = (cardFieldSize) => ({
+  type: actionTypes.SET_FIELD_SIZE,
+  cardFieldSize,
+});

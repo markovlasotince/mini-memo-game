@@ -22,6 +22,27 @@ export const generateCards = (numberOfPairs) => {
     cardId++;
   }
 
+  return shuffleCards(cards);
+  // return cards;
+};
+
+const shuffleCards = (cards) => {
+  let currentIndex = cards.length;
+  let randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [cards[currentIndex], cards[randomIndex]] = [
+      cards[randomIndex],
+      cards[currentIndex],
+    ];
+  }
+
   return cards;
 };
 
@@ -35,16 +56,34 @@ export const flipCardFromDeck = (cards, cardId) => {
     return n + (card.fliped === true);
   }, 0);
 
+  const numberOfNonMatchedCards = cards.reduce((n, card) => {
+    return n + (card.matched === false);
+  }, 0);
+
+  // if only 2 not matched cards left they are pair
+  if (numberOfNonMatchedCards === 2) {
+    cards.forEach((card) => {
+      if (card.matched === false) {
+        card.matched = true;
+      }
+    });
+    return cards;
+  }
+
   if (currentlyOpenCards === 2) {
     // find and see if match between two fliped cards
     const flipedPair = cards.filter((card) => card.fliped === true);
     if (flipedPair[0].cardImage === flipedPair[1].cardImage) {
       // this is a match!
-      cards[flipedPair[0].cardId].matched = true;
-      cards[flipedPair[0].cardId].fliped = false;
-
-      cards[flipedPair[1].cardId].matched = true;
-      cards[flipedPair[1].cardId].fliped = false;
+      cards.forEach((card) => {
+        if (
+          card.cardId === flipedPair[0].cardId ||
+          card.cardId === flipedPair[1].cardId
+        ) {
+          card.fliped = false;
+          card.matched = true;
+        }
+      });
     } else {
       cards.forEach((card) => {
         if (!card.matched) {
@@ -52,7 +91,12 @@ export const flipCardFromDeck = (cards, cardId) => {
         }
       });
     }
-    cards[cardId].fliped = true;
+    // cards[cardId].fliped = true;
+    cards.forEach((card) => {
+      if (card.cardId === cardId) {
+        card.fliped = true;
+      }
+    });
   } else {
     // if there is only one card opened, it's safe to flip one more
     cards.forEach((card) => {
@@ -68,5 +112,11 @@ export const flipCardFromDeck = (cards, cardId) => {
 export const getCurrentlyMatchedCards = (cards) => {
   return cards.reduce((n, card) => {
     return n + (card.currentlyMatchedCards === true);
-  }, 0)
-}
+  }, 0);
+};
+
+export const getCurrentlyNotMatchedCards = (cards) => {
+  return cards.reduce((n, card) => {
+    return n + (card.currentlyMatchedCards === false);
+  }, 0);
+};

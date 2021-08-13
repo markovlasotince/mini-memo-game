@@ -1,32 +1,46 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+
+// style
+import "./gamePlay.scss";
 
 // actions
-import { initGameAction, cardClicked } from "../../store/actions/gameplay";
+import { initGameAction } from "../../store/actions/gameplay";
 
 // components
 import CardField from "../../components/CardField";
+import { Redirect } from "react-router-dom";
 
 const GamePlay = () => {
   const dispatch = useDispatch();
-  const { cardFieldSize, totalNumberOfClicks, matchedCards } = useSelector(
+  const { cardFieldSize, matchedCards, cards } = useSelector(
     (state) => state.gameplay
   );
 
   useEffect(() => {
-    console.log('init gameplay')
-    dispatch(initGameAction(10));
+    dispatch(initGameAction(cardFieldSize));
   }, [initGameAction]);
 
   return (
-    <div>
-      <h5>Welcome to Game page</h5>
-      <button onClick={() => dispatch(cardClicked())}> click </button>
-      <h5>{cardFieldSize}</h5>
-      <h5>{totalNumberOfClicks}</h5>
-      <h5>{matchedCards && matchedCards.length / 2}</h5>
-      <h6>Game board will go here</h6>
-      <CardField />
+    <div className="game-play-page">
+      <motion.h1
+        className="game-play-welcome-message"
+        initial={{ y: -200 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", duration: 0.7 }}
+      >
+        Flip cards and match numbers ...
+      </motion.h1>
+      <div className="card-field-wrapper">
+        <CardField />
+      </div>
+      {matchedCards &&
+      cardFieldSize &&
+      matchedCards.length / 2 === cardFieldSize ? (
+        <Redirect to="/score" />
+      ) : null}
+      {cards && cards.length === 0 ? <Redirect to="/" /> : null}
     </div>
   );
 };

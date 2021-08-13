@@ -1,6 +1,8 @@
 const actionTypes = {
   // init game
   INIT_GAME: "INIT_GAME",
+  GET_FIELD_SIZE: "GET_FIELD_SIZE",
+  SET_FIELD_SIZE: "SET_FIELD_SIZE",
 
   // gameplay
   CARD_CLICK: "CARD_CLICK",
@@ -8,6 +10,7 @@ const actionTypes = {
   GET_CARDS: "GET_CARDS",
   GET_CARD: "GET_CARD",
   GET_MATCHED_CARDS: "GET_MATCHED_CARDS",
+  RESET_STATE: "RESET_STATE",
 };
 
 export default actionTypes;

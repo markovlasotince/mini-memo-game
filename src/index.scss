@@ -1,0 +1,44 @@
+@import './style/colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap');
+
+html {
+  line-height: 1.15;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Dosis', sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    190deg,
+    rgb(134, 123, 205) 0%,
+    rgb(106, 90, 171) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: auto;
+  color: $base-font-color;
+  text-transform: uppercase;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    cursor: default;
+  }
+
+  .m-1 {
+    margin: 1rem;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

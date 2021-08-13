@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 
 // style
 import "./cardField.scss";
@@ -16,16 +17,28 @@ const CardField = () => {
 
   useEffect(() => {
     dispatch(getCards());
-    console.log("cards", cards);
   }, [cards]);
 
   const renderCards = () =>
-    cards.map((card, i) => (
-      <Card key={i} cardId={card.cardId} cardFliped={card.fliped} cardImage={card.cardImage} cardMatched={card.matched} />
+    cards && cards.map((card, i) => (
+      <Card
+        key={i}
+        cardId={card.cardId}
+        cardFliped={card.fliped}
+        cardImage={card.cardImage}
+        cardMatched={card.matched}
+      />
     ));
 
   return (
-    <div className="card-field-wrapper">{cards !== [] && renderCards()}</div>
+    <motion.div
+      className="card-field"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}
+    >
+      {cards !== [] && renderCards()}
+    </motion.div>
   );
 };
 

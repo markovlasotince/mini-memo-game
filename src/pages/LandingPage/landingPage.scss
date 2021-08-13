@@ -1,0 +1,73 @@
+@import '../../style/colors.scss';
+
+.memo-game-landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .intro-message-wrapper {
+    margin-top: 30vh;
+    text-align: center;
+    text-transform: uppercase;
+
+    .intro-message {
+      opacity: 0.8;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .level-message{
+      margin: 1rem;
+    }
+
+    .choose-level-buttons{
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .game-level{
+        margin: 0 2rem;
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+        color: $link-color;
+        cursor: pointer;
+
+        &:hover {
+          color: $base-color;
+          background-color: $base-font-color;
+          border: 1px solid;
+          border-radius: 1rem;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .play-button {
+      margin-top: 1.5rem;
+
+      a {
+        padding: 0.5rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+        opacity: 0.8;
+        transition: 0.3s;
+        color: $link-color;
+
+        &:hover {
+          opacity: 1;
+          color: $base-color;
+          background-color: $base-font-color;
+          border: 1px solid;
+          padding: 0.5rem;
+          border-radius: 1rem;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
