@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { motion } from "framer-motion";
 
 // style
@@ -10,7 +11,7 @@ import { initGameAction } from "../../store/actions/gameplay";
 
 // components
 import CardField from "../../components/CardField";
-import { Redirect } from "react-router-dom";
+import Header from "../../components/Header";
 
 const GamePlay = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,13 @@ const GamePlay = () => {
 
   return (
     <div className="game-play-page">
+      <motion.div
+        initial={{ y: -200 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", duration: 0.7 }}
+      >
+        <Header />
+      </motion.div>
       <motion.h1
         className="game-play-welcome-message"
         initial={{ y: -200 }}

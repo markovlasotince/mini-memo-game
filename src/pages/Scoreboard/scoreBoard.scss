@@ -13,6 +13,27 @@
       font-size: 1.2rem;
     }
   }
+
+  .all-scores-table {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30%;
+    border: 1px solid;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    .score-data {
+      display: flex;
+      justify-content: space-between;
+      align-self: center;
+      margin: 0.5rem 0;
+      td {
+        align-self: center;
+      }
+    }
+  }
+
   .return-to-home-page {
     margin-top: 2.5rem;
 
@@ -40,8 +61,8 @@
 
 @media screen and (max-width: 600px) {
   .scoreboard-page {
-    .game-scores {
-      width: 60%;
+    .game-scores, .all-scores-table {
+      width: 60% !important;
     }
   }
 }

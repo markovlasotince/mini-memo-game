@@ -23,6 +23,18 @@
       margin: 1rem;
     }
 
+    .username-field {
+      background-color: $base-font-color;
+      border-radius: 2rem;
+      border: none;
+      outline: none;
+      padding: 0.5rem;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      text-align: center;
+      color: $base-color;
+      font-weight: bold;
+    }
+
     .choose-level-buttons {
       padding: 1rem 0;
       display: flex;

@@ -7,6 +7,8 @@ export default function gamePlayReducer(
     cards: [],
     card: null,
     matchedCards: [],
+    loadingScore: false,
+    username: ""
   },
   action
 ) {
@@ -17,6 +19,7 @@ export default function gamePlayReducer(
         // cardFieldSize: action.cardFieldSize || state.cardFieldSize,
         cardFieldSize: action.cardFieldSize,
         cards: action.cards,
+        loadingScore: null,
       };
     case actionTypes.CARD_CLICK:
       return {
@@ -49,8 +52,19 @@ export default function gamePlayReducer(
       };
     case actionTypes.SET_FIELD_SIZE:
       return {
+        username: state.username,
         cardFieldSize: action.cardFieldSize,
         totalNumberOfClicks: 0,
+      };
+    case actionTypes.LOADING_SCORE:
+      return {
+        ...state,
+        loadingScore: action.loadingScore,
+      };
+    case actionTypes.SET_USERNAME:
+      return {
+        ...state,
+        username: action.username,
       };
     default:
       return state;

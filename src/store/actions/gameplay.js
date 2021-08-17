@@ -3,7 +3,7 @@ import {
   generateCards,
   getCardById,
   flipCardFromDeck,
-} from "../../utils/gameLogic";
+} from "../../helper/gameLogic";
 
 export const initGame = (cardFieldSize, cards) => ({
   type: actionTypes.INIT_GAME,
@@ -50,4 +50,59 @@ export const resetState = () => ({
 export const setGameFieldSize = (cardFieldSize) => ({
   type: actionTypes.SET_FIELD_SIZE,
   cardFieldSize,
+});
+
+export const settingScore = (loading) => ({
+  type: actionTypes.LOADING_SCORE,
+  loadingScore: loading,
+});
+
+export const setScore = (cardFieldSize, totalNumberOfClicks, username) => (
+  dispatch
+) => {
+  if (!cardFieldSize) {
+    return;
+  }
+  dispatch(settingScore(true));
+
+  let score = getScoreFromLocalStorage();
+
+  if (!score) {
+    score = {};
+  }
+
+  if (!score[cardFieldSize]) {
+    score[cardFieldSize] = [
+      {
+        score: totalNumberOfClicks,
+        username: username,
+        cardFieldSize,
+      },
+    ];
+    setScoreInLocalStorage(score);
+  } else {
+    score[cardFieldSize].push({
+      score: totalNumberOfClicks,
+      username: username,
+      cardFieldSize,
+    });
+    score[cardFieldSize].sort((a, b) => a.score - b.score);
+    setScoreInLocalStorage(score);
+  }
+  setTimeout(() => {
+    dispatch(settingScore(false));
+  }, 2000);
+};
+
+const setScoreInLocalStorage = (score) => {
+  localStorage.setItem("score", JSON.stringify(score));
+};
+
+export const getScoreFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem("score"));
+};
+
+export const setUsername = (username) => ({
+  type: actionTypes.SET_USERNAME,
+  username,
 });

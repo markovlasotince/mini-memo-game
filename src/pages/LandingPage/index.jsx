@@ -7,14 +7,17 @@ import { motion } from "framer-motion";
 import "./landingPage.scss";
 
 // actions
-import { setGameFieldSize } from "../../store/actions/gameplay";
+import { setGameFieldSize, setUsername } from "../../store/actions/gameplay";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
+  const [username, handleUsernameInput] = useState("Mini warrior");
   const [level, setLevel] = useState(null);
 
   const setGameLevel = (level) => {
     setLevel(level);
+    console.log(username);
+    dispatch(setUsername(username));
     dispatch(setGameFieldSize(level));
   };
 
@@ -28,7 +31,21 @@ const LandingPage = () => {
       >
         <h1 className="intro-message">Welcome to my mini memo game</h1>
         {!level && (
-          <h6 className="level-message">*Please select difficulty level</h6>
+          <h6 className="level-message">
+            *Please add username and select difficulty level
+          </h6>
+        )}
+        {!level && (
+          <motion.input
+          whileHover={{ scale: 1.1 }}
+            type="text"
+            name="username"
+            value={username}
+            className="username-field"
+            onClick={() => handleUsernameInput("")}
+            onChange={(e) => handleUsernameInput(e.target.value)}
+            maxLength={15}
+          />
         )}
         {!level ? (
           <div className="choose-level-buttons">

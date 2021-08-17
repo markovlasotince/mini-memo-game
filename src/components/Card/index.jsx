@@ -17,8 +17,8 @@ const Card = ({ cardId, cardFliped, cardImage, cardMatched }) => {
   }, [cards]);
 
   const variants = {
-    flipToImage: { rotateY: -180, duration: 1 },
-    flipToBackground: { rotateY: 0, duration: 1 },
+    flipToImage: { rotateY: -180, duration: 0.5 },
+    flipToBackground: { rotateY: 0, duration: 0.5 },
   };
 
   return cardMatched ? (
@@ -32,14 +32,14 @@ const Card = ({ cardId, cardFliped, cardImage, cardMatched }) => {
       whileHover={{ scale: 1.1 }}
       animate={cardFliped ? "flipToImage" : "flipToBackground"}
       variants={variants}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.5 }}
     >
       {cardFliped ? (
         <motion.p
           className="card-image"
           initial={{ opacity: 0 }}
           animate={{ rotateY: 180, opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.5 }}
         >
           {cardImage}
         </motion.p>
